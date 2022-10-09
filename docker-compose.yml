@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web1:
+    restart: on-failure
+    image: nicopaez/password-api
+    hostname: web1
+    ports:
+      - '81:3000'
+  web2:
+    restart: on-failure
+    image: nicopaez/password-api
+    hostname: web2
+    ports:
+      - '82:3000'
+  nginx:
+    build: ./nginx
+    ports:
+    - '80:80'
+    depends_on:
+    - web1
+    - web2
