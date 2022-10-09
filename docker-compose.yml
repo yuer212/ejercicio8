@@ -13,7 +13,9 @@ services:
     ports:
       - '82:3000'
   nginx:
-    build: ./nginx
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.nginx
     ports:
     - '80:80'
     depends_on:
